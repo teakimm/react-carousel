@@ -84,7 +84,7 @@ it("works when you click on the left arrow", function () {
   debug(container);
 });
 
-it("hides left arrow on image 1", function () {
+it("check arrows hide visibility", function () {
   const { container } = render(
     <Carousel
       photos={TEST_IMAGES}
@@ -92,15 +92,30 @@ it("hides left arrow on image 1", function () {
     />
   );
 
-  // expect only one arrow to show on render
+  // exoect left arrow to be hidden
   expect(
-    container.querySelectorAll('i').length
-  ).toEqual(1);
+    container.querySelector('.bi-arrow-left-circle')
+  ).toHaveClass('hidden');
+
+  // move forward in the carousel
+  const rightArrow = container.querySelector(".bi-arrow-right-circle");
+  fireEvent.click(rightArrow);
+
+  // expect both arrows to show on render
   expect(
-    container.querySelector("i")
-  ).toHaveClass("bi-arrow-right-circle");
+    container.querySelector('.bi-arrow-left-circle')
+  ).not.toHaveClass('hidden');
 
+  expect(
+    container.querySelector('.bi-arrow-right-circle')
+  ).not.toHaveClass('hidden');
 
+  // move forward in the carousel
+  fireEvent.click(rightArrow);
 
+  // expect right arrow to be hidden
+  expect(
+    container.querySelector('.bi-arrow-right-circle')
+  ).toHaveClass('hidden');
 
 });

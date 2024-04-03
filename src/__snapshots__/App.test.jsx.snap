@@ -15,7 +15,7 @@ exports[`Matches snapshot 1`] = `
         class="Carousel-main"
       >
         <i
-          class="bi bi-arrow-left-circle"
+          class="bi bi-arrow-left-circle hidden"
         />
         <div
           class="Card"
@@ -41,7 +41,7 @@ exports[`Matches snapshot 1`] = `
           </small>
         </div>
         <i
-          class="bi bi-arrow-right-circle"
+          class="bi bi-arrow-right-circle "
         />
       </div>
     </div>

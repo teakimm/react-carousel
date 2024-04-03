@@ -20,14 +20,8 @@ function Carousel({ photos, title }) {
   const currCard = photos[currCardIdx];
   const total = photos.length;
 
-  //Increments currCardIdx state by 1
-  // function goForward() {
-  //   setCurrCardIdx(currCardIdx === 2 ? currCardIdx - 2 : currCardIdx + 1);
-  // }
-
-  // function goBackward() {
-  //   setCurrCardIdx(currCardIdx === 0 ? currCardIdx + 2 : currCardIdx - 1);
-  // }
+  const leftHiddenClass = currCardIdx === 0 ? "hidden" : '';
+   const rightHiddenClass = currCardIdx === total-1 ? "hidden" : '';
 
   function goForward() {
     setCurrCardIdx(currCardIdx + 1);
@@ -41,20 +35,18 @@ function Carousel({ photos, title }) {
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        {currCardIdx === 0 ? "" :
-          < i className={`bi bi-arrow-left-circle`}
+          < i className={`bi bi-arrow-left-circle ${leftHiddenClass}`}
             onClick={goBackward}
-          />}
+          />
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        {currCardIdx === 2 ? "" : //TODO: use total, consider using class names
-          < i className={`bi bi-arrow-right-circle`}
+          < i className={`bi bi-arrow-right-circle ${rightHiddenClass}`}
             onClick={goForward}
-          />}
+          />
       </div>
     </div>
   );

@@ -14,6 +14,9 @@
   color: black;
 }
 
+.Carousel-main>i.hidden {
+  visibility: hidden;
+}
 .bi {
   font-size: 35px
 }
